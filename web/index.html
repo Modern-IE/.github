@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>Modern IE - Engineering for Every Era</title>
+    <style>
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #fbfbfd;
+            color: #1d1d1f;
+            line-height: 1.5;
+            text-align: center;
+        }
+        a { text-decoration: none; }
+        .nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            height: 54px;
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e5ea;
+            z-index: 999;
+        }
+        @supports (backdrop-filter: blur(20px)) {
+            .nav {
+                background-color: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
+        }
+        .nav-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 0 20px;
+            line-height: 54px; 
+        }
+        .nav-logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+        .nav-link {
+            float: right;
+            font-size: 12px;
+            color: #1d1d1f;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+        }
+
+        .hero {
+            padding: 160px 20px 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero-title {
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin-bottom: 16px;
+        }
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: #86868b;
+            margin-bottom: 40px;
+        }
+        .projects-container {
+            max-width: 1020px;
+            margin: 0 auto;
+            padding: 0 10px 100px 10px;
+            text-align: left; /* 恢复左对齐供卡片排版 */
+        }
+        
+        .card {
+            /* 现代浏览器使用 inline-block，IE6/7使用 *display: inline */
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            vertical-align: top;
+            
+            /* 三等分减去间距 */
+            width: 30%;
+            margin: 0 1.5% 30px 1.5%;
+            padding: 32px;
+            background-color: #ffffff;
+            
+            /* IE 降级：给个边框。现代浏览器：覆盖为阴影圆角 */
+            border: 1px solid #d2d2d7; 
+            border-radius: 18px;
+            
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box; /* IE8+ 支持，IE6受控于 Doctype */
+        }
+        /* 针对支持特性的浏览器抹除硬边框 */
+        @supports (box-shadow: 0 0 0 red) {
+            .card { border: none; }
+        }
+        
+        /* 仅在现代浏览器启用 Hover 浮动特效 */
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+        .card-desc {
+            font-size: 14px;
+            color: #86868b;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            height: 66px; /* 固定高度防止卡片错位 */
+            overflow: hidden;
+        }
+        
+        .btn {
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            padding: 8px 16px;
+            background-color: #0071e3;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 16px; /* IE 降级为方块 */
+            transition: background-color 0.2s;
+        }
+        .btn:hover {
+            background-color: #0077ed;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .hero-title { font-size: 40px; }
+            .hero-subtitle { font-size: 18px; }
+            .card {
+                width: 90%;
+                margin: 0 5% 20px 5%;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <div class="nav-inner">
+            <span class="nav-logo">Modern IE</span>
+            <a href="https://github.com/orgs/Modern-IE/repositories" class="nav-link" target="_blank">View on GitHub</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1 class="hero-title">Engineering for Every Era.</h1>
+        <p class="hero-subtitle">Modern paradigms, legacy platforms. Bridging the gap between 2001 and today.</p>
+    </div>
+
+    <div class="projects-container">
+        
+        <div class="card">
+            <h3 class="card-title">OpenAI SDK (IE6)</h3>
+            <p class="card-desc">A fully functional, pure ES3 compatible OpenAI SDK designed to run flawlessly on Internet Explorer 6 via ActiveXObject.</p>
+            <a href="https://github.com/orgs/Modern-IE/repositories" class="btn" target="_blank">Repository</a>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Incremental-DOM</h3>
+            <p class="card-desc">Incremental-DOM support designed for Internet Explorer 6.</p>
+            <a href="https://github.com/orgs/Modern-IE/repositories" class="btn" target="_blank">Repository</a>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Vue-Router</h3>
+            <p class="card-desc">Vue Router support designed for Internet Explorer 6.</p>
+            <a href="https://github.com/orgs/Modern-IE/repositories" class="btn" target="_blank">Repository</a>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Marked</h3>
+            <p class="card-desc">Marked support designed for Internet Explorer 6.</p>
+            <a href="https://github.com/orgs/Modern-IE/repositories" class="btn" target="_blank">Repository</a>
+        </div>
+
+        <div class="card">
+            <h3 class="card-title">Tailwind</h3>
+            <p class="card-desc">Tailwind support designed for Internet Explorer 6.</p>
+            <a href="https://github.com/orgs/Modern-IE/repositories" class="btn" target="_blank">Repository</a>
+        </div>
+    </div>
+
+</body>
+</html>
